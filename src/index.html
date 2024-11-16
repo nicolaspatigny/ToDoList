@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Todo List</h1>
+        </header>
+        
+        <div class="main-content">
+            <div class="projects-section">
+                <h2>Projects</h2>
+                <div id="projectList"></div>
+                <div class="add-project">
+                    <input type="text" id="newProjectInput" placeholder="New project name">
+                    <button id="addProjectBtn">Add Project</button>
+                </div>
+            </div>
+
+            <div class="todos-section">
+                <h2>Todos</h2>
+                
+                <!-- Search and Filter Section -->
+                <div class="todo-controls">
+                    <div class="search-box">
+                        <input type="text" id="searchTodos" placeholder="Search todos...">
+                    </div>
+                    
+                    <div class="filters">
+                        <form id="filterForm">
+                            <select id="filterStatus">
+                                <option value="">All Status</option>
+                                <option value="active">Active</option>
+                                <option value="completed">Completed</option>
+                                <option value="overdue">Overdue</option>
+                            </select>
+
+                            <select id="filterPriority">
+                                <option value="">All Priorities</option>
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                            </select>
+
+                            <input type="text" id="filterTags" placeholder="Filter by tags (comma-separated)">
+                        </form>
+                    </div>
+
+                    <div class="sort-controls">
+                        <select id="sortCriteria">
+                            <option value="dueDate">Due Date</option>
+                            <option value="priority">Priority</option>
+                            <option value="title">Title</option>
+                            <option value="createdAt">Created Date</option>
+                        </select>
+                        <button id="sortDirection" class="sort-direction">↑</button>
+                    </div>
+                </div>
+
+                <div id="todoList"></div>
+
+                <div class="add-todo">
+                    <h3>Add New Todo</h3>
+                    <form id="todoForm">
+                        <input type="text" id="todoTitle" placeholder="Title" required>
+                        <textarea id="todoDescription" placeholder="Description"></textarea>
+                        <input type="date" id="todoDueDate" required>
+                        <select id="todoPriority">
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                        <input type="text" id="todoTags" placeholder="Tags (comma-separated)">
+                        <button type="submit">Add Todo</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

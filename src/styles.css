@@ -1,0 +1,413 @@
+/* src/styles.css */
+:root {
+    --primary-color: #3498db;
+    --primary-dark: #2980b9;
+    --secondary-color: #2ecc71;
+    --warning-color: #f1c40f;
+    --danger-color: #e74c3c;
+    --background: #1e1e1e;
+    --card-bg: #2a2a2a;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --border-color: #3a3a3a;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: var(--background);
+    color: var(--text-primary);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+}
+
+header h1 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .container {
+        padding: 1rem;
+    }
+}
+
+.projects-section, .todos-section {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+
+h2 {
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+/* Projects Styling */
+.project {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    margin: 0.5rem 0;
+    background: var(--background);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.project:hover {
+    background: #363636;
+}
+
+.project.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+.project span {
+    font-weight: 500;
+    margin-right: auto;
+}
+
+.add-project {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+#newProjectInput {
+    width: 100%;
+    padding: 0.8rem;
+    background: var(--background);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    height: 42px;
+}
+
+/* Todos Styling */
+.todo {
+    padding: 1rem;
+    margin: 0.8rem 0;
+    background: var(--background);
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: auto 1fr 2fr auto auto;
+    gap: 1rem;
+    align-items: center;
+    transition: var(--transition);
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.todo:hover {
+    background: #363636;
+}
+
+.todo.high {
+    border-left: 4px solid var(--danger-color);
+}
+
+.todo.medium {
+    border-left: 4px solid var(--warning-color);
+}
+
+.todo.low {
+    border-left: 4px solid var(--secondary-color);
+}
+
+.todo.completed {
+    opacity: 0.7;
+}
+
+.todo.completed .title,
+.todo.completed .description {
+    text-decoration: line-through;
+    color: var(--text-secondary);
+}
+
+/* Form Styling */
+.add-todo {
+    margin-top: 2rem;
+}
+
+.add-todo h3 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+#todoForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: var(--background);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+input, textarea, select {
+    padding: 0.8rem;
+    background: var(--background);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Button Styling */
+button {
+    padding: 0.8rem 1.2rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button:hover {
+    background-color: var(--primary-dark);
+}
+
+button.delete {
+    background-color: var(--danger-color);
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+}
+
+button.delete:hover {
+    background-color: #c0392b;
+}
+
+/* Checkbox Styling */
+input[type="checkbox"] {
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    accent-color: var(--secondary-color);
+}
+
+/* Priority Colors in Select */
+select option[value="high"] {
+    color: var(--danger-color);
+}
+
+select option[value="medium"] {
+    color: var(--warning-color);
+}
+
+select option[value="low"] {
+    color: var(--secondary-color);
+}
+
+/* Todo Content Styling */
+.todo .title {
+    font-weight: 500;
+}
+
+.todo .description {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.todo .due-date {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+    .todo {
+        grid-template-columns: auto 1fr auto;
+        grid-template-areas:
+            "checkbox title delete"
+            "space description description"
+            "space date date";
+        gap: 0.5rem;
+    }
+
+    .todo input[type="checkbox"] {
+        grid-area: checkbox;
+    }
+
+    .todo .title {
+        grid-area: title;
+    }
+
+    .todo .description {
+        grid-area: description;
+    }
+
+    .todo .due-date {
+        grid-area: date;
+    }
+
+    .todo .delete {
+        grid-area: delete;
+    }
+
+    .add-project {
+        grid-template-columns: 1fr;
+    }
+    
+    #addProjectBtn {
+        width: 100%;
+    }
+}
+
+/* Loading State */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-secondary);
+}
+
+/* Success Animation */
+@keyframes success {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.success {
+    animation: success 0.3s ease;
+}
+
+/* Add these to your styles.css */
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: var(--shadow);
+    animation: slideIn 0.3s ease;
+}
+
+.modal-content h3 {
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.modal-buttons button {
+    flex: 1;
+}
+
+.modal-buttons button[type="button"] {
+    background-color: var(--text-secondary);
+}
+
+@media (max-width: 640px) {
+    .modal-content {
+        width: 95%;
+        padding: 1.5rem;
+    }
+}
